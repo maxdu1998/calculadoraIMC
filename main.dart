@@ -32,7 +32,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController _alturaController = TextEditingController();
   TextEditingController _pesoController = TextEditingController();
-  IconData _icone = Icons.calculate;
+  Widget _resultado = Icons.calculate as Widget;
 
   void _limparCampos() {
     _alturaController.text = "";
@@ -45,13 +45,13 @@ class _MyHomePageState extends State<MyHomePage> {
     double alt = double.parse(_alturaController.text);
     double pes = double.parse(_pesoController.text);
 
-    var myImc = (pes / (alt * alt));
+    var meuImc = (pes / (alt * alt));
 
     //Realiza a nevegação para a próxima tela (resultado)
     //instanciando o widget IMCResultado e passando os parâmetros
     //necessários:
     setState(() {});
-    _icone = Icons.calculate;
+    _resultado = Text("$meuImc");
   }
 
   @override
@@ -72,11 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 // Logotipo da Calculadora
                 Padding(
                     padding: EdgeInsets.only(top: 10, bottom: 10),
-                    child: Icon(
-                      _icone,
-                      color: Colors.blue,
-                      size: 80.0,
-                    )),
+                    child: _resultado),
 
                 // Campo para a Altura
                 Padding(
